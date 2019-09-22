@@ -1,0 +1,117 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+#define inf             0x3f3f3f3f
+#define INF             2e18
+#define eps             1e-9
+
+#define FastRead        ios_base::sync_with_stdio(0);cin.tie(0)
+#define fRead           freopen("input.txt","r",stdin)
+#define fWrite          freopen("output.txt","w",stdout)
+
+#define LL              long long
+#define ull            unsigned long long
+#define PI              acos(-1.0)
+#define pb              push_back
+#define mk              make_pair
+#define pii             pair<int,int>
+#define pLL             pair<LL,LL>
+#define ff              first
+#define ss              second
+#define all(a)          a.begin(),a.end()
+#define SQR(a)          ((a)*(a))
+#define min3(a,b,c)     min(a,min(b,c))
+#define max3(a,b,c)     max(a,max(b,c))
+#define min4(a,b,c,d)   min(min(a,b),min(c,d))
+#define max4(a,b,c,d)   max(max(a,b),max(c,d))
+#define max5(a,b,c,d,e) max(max3(a,b,c),max(d,e))
+#define min5(a,b,c,d,e) min(min3(a,b,c),min(d,e))
+#define vi              vector <int>
+#define vL              vector <LL>
+#define LB(a,x)         (lower_bound(all(a),x)-a.begin()) //  first element in the range [first,last) which does not compare less than val.
+#define UB(a,x)         (upper_bound(all(a),x)-a.begin()) //  first element in the range [first,last) which compares greater than val.
+#define prec(n)         fixed << setprecision(n)
+
+#define MEM(a,x)        memset(a,x,sizeof(a))
+#define SORT(v)         sort(v.begin(),v.end())
+#define REV(v)          reverse(v.begin(),v.end())
+#define Unique(a)       sort(all(a)),a.erase(unique(all(a)),a.end())
+
+#define FOR(i,a,b)      for(int i=a;i<=b;i++)
+#define ROF(i,a,b)      for(int i=a;i>=b;i--)
+#define REP(i,b)        for(int i=0;i<b;i++)
+#define IT(it,x)	    for(it=x.begin();it!=x.end();it++)
+
+
+vector<char>v;
+int main()
+{
+//    fWrite;
+    string s;
+    while(cin>>s)
+    {
+        if(s[0]=='-')
+            break;
+        if(s[0]!='0')
+        {
+            LL a=0;
+            for(int i=0; i<s.size(); i++)
+            a=a*10+s[i]-'0';
+//            a=44;
+//                cout<<a<<"....a\n";
+                v.clear();
+            while(a)
+            {
+                int c=a%16;
+                a=a/16;
+//              cout<<c<<endl;
+                if(c==10)
+                    v.pb('A');
+                else if(c==11)
+                    v.pb('B');
+                else if(c==12)
+                    v.pb('C');
+                else if(c==13)
+                    v.pb('D');
+                else if(c==14)
+                    v.pb('E');
+                else if(c==15)
+                    v.pb('F');
+                else
+                {
+                    v.pb(char(c+'0'));
+                }
+            }
+            cout<<"0x";
+//            cout<<v.size()<<".....\n";
+            for(int i=v.size()-1; i>=0; i--)
+                cout<<v[i];
+            cout<<"\n";
+        }
+        else
+        {
+            LL a=0;
+            LL c=1;
+            for(int i=s.size()-1; i>=2; i--)
+            {
+                if(s[i]=='A')
+                    a+=c*10;
+                else if(s[i]=='B')
+                    a+=c*11;
+                else if(s[i]=='C')
+                    a+=c*12;
+                else if(s[i]=='D')
+                    a+=c*13;
+                else if(s[i]=='E')
+                    a+=c*14;
+                else if(s[i]=='F')
+                    a+=c*15;
+                else
+                    a+=c*(s[i]-'0');
+                c*=16;
+//              cout<<a<<"\n";
+            }
+            cout<<a<<"\n";
+        }
+    }
+}
